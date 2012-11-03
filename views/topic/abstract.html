@@ -11,12 +11,12 @@
 		<% var _thistag=""; %>
 		<% for(var _ii=0;_ii<topic.tags.length;_ii++){ %>
 			<% if(_ii==0){ %>
-				<% var _thistag="¡¾" + topic.tags[0].name + "¡¿"; %>
+				<% var _thistag="ã€" + topic.tags[0].name + "ã€‘"; %>
 			<% } %>
 		<% } %>
       <a class='topic_title' href='/topic/<%= topic._id %>'>
         <% if(topic.top){%>
-          <span class='put_top'>ÖÃ¶¥</span>
+          <span class='put_top'>ç½®é¡¶</span>
           <% } %>
         <%= _thistag %>
         <%= topic.title %>
@@ -33,18 +33,18 @@
         <a class='dark' href='/user/<%= topic.author.name %>'><%= topic.author.name %><%= (topic.author.nick_name?'(' + topic.author.nick_name + ')':"") %></a> 
       </div> -->
       <div class='click_part'>
-        µã»÷Êý <%= topic.visit_count %>
+        ç‚¹å‡»æ•° <%= topic.visit_count %>
       </div>
       <% if(topic.reply){  %>
         <div class='reply_part'>
           <a class='dark' href="/user/<%= topic.reply.author.name %>"><%= topic.reply.author.name %><%= (topic.author.nick_name?'(' + topic.author.nick_name + ')':"") %> </a>
-          »Ø¸´ÓÚ
+          å›žå¤äºŽ
           <%= topic.reply.friendly_create_at %>
         </div>
       <% }else{ %>
         <a class='dark' href="/user/<%= topic.author.name %>"><%= topic.author.name %><%= (topic.author.nick_name?'(' + topic.author.nick_name + ')':"") %> </a>
         <div class='reply_part'>
-          ´´½¨ÓÚ <%= topic.friendly_create_at %>
+          åˆ›å»ºäºŽ <%= topic.friendly_create_at %>
         </div>
       <% } %>
     </span>
