@@ -1,0 +1,13 @@
+
+	<p class="tags-cat">
+		<strong>　产品线：</strong>
+		<% if(tag.is_selected){ %>
+		<span class='tag_selectable tag_select' tag_id='<%= tag._id %>'>
+			<%= tag.name %>
+		</span>
+		<% }else{ %>
+		<span class='tag_selectable' tag_id='<%= tag._id %>'>
+			<%= tag.name %>
+		</span>
+		<% } %>
+	</p>

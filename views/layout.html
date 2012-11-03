@@ -1,0 +1,99 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+  <head>
+    <!-- meta -->
+    <meta charset="utf-8" />
+    <meta name='description' content='<%= config.description %>'>
+    <%
+    var headers = config.site_headers || [];
+    for (var i = 0, l = headers.length; i < l; i++) { 
+    %>
+    <%- headers[i] %>
+    <% } %>
+    <link title="RSS" type="application/rss+xml" rel="alternate" href="/rss" />
+    <!-- style -->
+    <link rel="stylesheet" type="text/css" href="/libs/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+    <link type='text/css' rel='stylesheet' href='/libs/code-prettify/prettify.css' />
+    <% if (locals.extra_style) { %>
+    <style type="text/css">
+      <%- locals.extra_style %>
+    </style>
+    <% } %>
+    <script src='/libs/code-prettify/prettify.js'></script>
+    <!-- script -->
+    <script src='/libs/jquery/jquery.js'></script>
+    <script src='/libs/bootstrap/js/bootstrap.js'></script>
+    <script src='/javascripts/main.js'></script>
+    <% if (config.site_enable_search_preview) { %>
+    <script>
+      var __google_search_domain = '<%= config.site_google_search_domain || "" %>';
+    </script>
+    <script src='/javascripts/google_search_preview.js'></script>
+    <% } %>
+    <% if (locals.topic) { %>
+    <title><%= topic.title %> - <%= config.name %></title>
+    <% } else { %>
+    <title><%= config.description %></title>
+    <% } %>
+  </head>
+  <body>
+    <!-- navbar -->
+    <div class='navbar'>
+      <div class='navbar-inner'>
+        <div class='container'>
+          <a class='brand' href='/'><%- config.site_logo || config.name %></a>
+          <form id='search_form' class='navbar-search' action="/">
+            <input type='text' id='q' name='q' class='search-query span3' value='<%= locals.keyword || '' %>'/>
+          </form>
+          <ul class='nav pull-right'>
+      			<li><a href="/tag/文章">经验文章</a></li>
+      			<li><a href="/tag/文档">文档PPT</a></li>
+      			<li><a href="/tag/书籍">电子书籍</a></li>
+      			<li><a href="/tag/代码">代码特效</a></li>
+      			<li><a href="/tag/工具">应用工具</a></li>
+      			<li><a href="/tag/项目">优秀项目</a></li>
+            <li><a href="/tag/圈子">前端圈子</a></li>
+      			<li><a href="/tag/链接">阅读列表</a></li>
+            <%
+            var site_navs = config.site_navs || [];
+            for (var i = 0, l = site_navs.length; i < l; i++) {
+              var nav = site_navs[i];
+            %>
+            <li><a href="<%- nav[0] %>" target="<%- nav[2] %>"><%- nav[1] %></a></li> 
+            <% } %>
+            <li class='divider-vertical'></li>  
+            <% if (locals.current_user) { %>
+            <li><a href='/setting'>设置</a></li>  
+            <li><a href='/signout'>退出</a></li>  
+            <% } else { %>
+            <li><a href='/signup'>注册</a></li> 
+            <li><a href='/signin'>登录</a></li> 
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </div>
+		<section class="Widget-tags">
+			<div class="inner Mod-panel">
+				<strong class="caption">热门标签：</strong>
+        <a class="tag_big" href="/tag/html5">html5</a>
+        <a class="tag_big" href="/tag/css3">css3</a>
+        <a class="tag_big" href="/tag/webapp">webapp</a>
+        <a class="tag_big" href="/tag/nodejs">nodejs</a>
+				<a class="tag_big" href="/tag/mongodb">mongodb</a>
+
+				<a style="float:right;" class="tag_big" href="/topic/5093683b4f9ce3257c00003b">平台更新日志</a>
+			</div>
+		</section>
+
+    <!-- wrapper -->  
+    <div id='wrapper'>
+      <div id='main'>
+        <%- body %>
+      </div>
+      <div class='cl cr'></div>
+    </div>
+    <div id='backtotop'>回到顶部</div>
+  </body>
+</html> 

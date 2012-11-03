@@ -1,0 +1,259 @@
+<div id='sidebar' style="display:none">
+
+</div>
+
+<style type="text/css">
+input.span8, textarea.span8, .uneditable-input.span8 {
+width: 1170px;
+}
+.nav-pills{
+	padding-left:10px;
+}
+.nav-pills > li > a{
+	display:inline-block;
+	margin: 0 15px 0 5px;
+}
+.nav-pills > li > a{
+	background: #EEE;
+}
+.nav-pills > li > a:hover{
+	color: #fff;
+	background: #08c;
+}
+</style>
+<div id='content' style="margin:0;padding:10px 0 0 0;position:relative;">
+  <div class='panel'>
+    <div class='header'>
+      <ul class='breadcrumb'>
+        <li><a href='/'>主页</a><span class='divider'>/</span></li>
+        <% if(locals.action && action == 'edit'){ %>
+        <li class='active'>编辑文档</li>
+        <% }else{ %>
+        <li class='active'>发布文档</li>
+        <% } %>
+      </ul>
+    </div>
+    <div class='inner'>
+      <% if(locals.edit_error){ %>
+      <div class="alert alert-error"> 
+        <a class="close" data-dismiss="alert" href="#">&times;</a>
+        <strong><%= edit_error %></strong>
+      </div>
+      <% } %>
+      <% if(locals.error){ %>
+      <div class="alert alert-error" >  
+        <strong><%= error %></strong>
+      </div>
+      <% }else{ %>
+      <% if(locals.action && action == 'edit'){ %>
+      <form id='create_topic_form' action='/topic/<%= topic_id %>/edit' method='post'>
+      <% }else{ %>
+      <form id='create_topic_form' action='/topic/create' method='post'>
+      <% } %>
+        <div>
+          <div>
+            <strong>　　　标题：</strong>
+            <% if(locals.title){ %>
+            <input style="width:600px;" class='span8' id='title' name='title' rows='3' value="<%= title %>" />
+            <% }else{ %>
+            <input style="width:600px;" class='span8' id='title' name='title' rows='3' />
+            <% } %>
+          </div>
+        </div>
+        <div class='sep10'></div>
+        <div class='sep10'></div>
+        <!-- 增加缩略图字段  -2012.11.1 -->     
+        <div>
+          <div>
+            <strong>　　缩略图：</strong>
+            <% if(locals.face){ %>
+            <input style="width:600px;" class='span8' id='face' name='face' rows='3' value="<%= face %>" />
+            <% }else{ %>
+            <input style="width:600px;" class='span8' id='face' name='face' rows='3' />
+            <% } %>
+            <script type="text/javascript" src="/libs/ajax-upload/ajaxupload.js"></script>
+            <input id="faceFile" type="button" class="btn" value="上传">
+            <img style="left:800px;position:absolute;top:60px;" src="<%= locals.face || '' %>" alt="" id="viewFace" />
+            <script type="text/javascript">
+              var img_uploader = new AjaxUpload("faceFile",{
+                autoSubmit : true,
+                responseType: 'json',
+                action : "/upload/image",
+                onSubmit: function(file,ext) {
+                  if (! (ext && /^(jpg|png|gif|jpeg)$/i.test(ext))){
+                    alert('只能上传 jpg|png|gif|jpeg 格式的图像。');
+                    return false;
+                  };
+                },
+                data: { user_action: 'upload_image'},
+                onComplete : function(file, response){
+                  if(response.status == "success"){
+                    var _faceUrl = "http://" + window.location.host + response.url;
+                    $("#face").val(_faceUrl);
+                    $("#viewFace").attr("src", _faceUrl);
+                  }else{
+                    alert("上传失败，请重试。");
+                  }
+                }
+              });
+            </script>
+          </div>
+        </div>
+        <div class='sep10'></div>
+        <div class='sep10'></div>
+        <!-- 增加缩略图字段 --> 
+        <div>
+          <label style="float:left;margin-top:3px;" class='bold' for='t_content'>内容和分类:　</label>
+          <div class='tabbable'>
+            <ul class='nav nav-pills'>
+				<li class='active'><strong>1)</strong><a href='#tags'data-toggle='pill'>选择分类</a></li>
+				<li><strong>2)</strong><a href='#markdown' data-toggle='pill'>编辑文档(markdown)</a></li>
+				<li><strong>3)</strong><a href='#preview' data-toggle='pill' class="preview-btn">文档预览</a></li>
+            </ul>
+            <div class='tab-content'>
+              <div class='tab-pane' id='markdown'>
+                <div id='wmd-button-bar'></div>
+                <div class='input'>
+                  <% if(locals.content){ %>
+                  <textarea class='span8' id='wmd-input' name='t_content' rows='20' style="height:600px;background:#000;color:#fff;font-size:14px;line-height:22px;font-family:'微软雅黑';"><%= content %></textarea>
+                  <% }else{ %>
+                  <textarea class='span8' id='wmd-input' name='t_content' rows='20' style="height:600px;background:#000;color:#fff;font-size:14px;line-height:22px;font-famiyl:'微软雅黑';"></textarea>
+                  <% } %>
+                </div>
+              </div>
+              <div id='preview' class='tab-pane'>
+                <div id='wmd-preview' class='wmd-preview topic-wmd-preview'></div>
+              </div>
+              <div id='tags' class='active tab-pane'>
+                <div class='tags_select'>
+                  <!-- <%- partial('tag/tag_selectable',{collection:tags, as:'tag'}) %> -->
+				  <% var Types=[],Os=[],Lang=[],Key=[]; %>
+				  <% for(var tag in tags){ %>
+
+          <% if (tags[tag].itype==1){ %>
+            <% Types.push(tags[tag]); %>
+          <% } %> 
+          <% if (tags[tag].itype==2){ %>
+            <% Os.push(tags[tag]); %>
+          <% } %> 
+          <% if (tags[tag].itype==3){ %>
+            <% Lang.push(tags[tag]); %>
+          <% } %> 
+					<% if (tags[tag].itype==4){ %>
+						<% Key.push(tags[tag]); %>
+					<% } %>					
+
+				  <% } %>
+				  <br />
+					<p class="tags-cat">
+						<strong>　资源类型：</strong>
+						<% for(var ti=0;ti<Types.length;ti++) { %>
+							<% if(Types[ti].is_selected){ %>
+							<span class='tag_selectable tag_select' tag_id='<%= Types[ti]._id %>'>
+								<%= Types[ti].name %>
+							</span>
+							<% }else{ %>
+							<span class='tag_selectable' tag_id='<%= Types[ti]._id %>'>
+								<%= Types[ti].name %>
+							</span>
+							<% } %>						
+						<% } %>
+					</p>
+					<p class="tags-cat">
+						<strong>兼容性载体：</strong>
+						<% for(var ti=0;ti<Os.length;ti++) { %>
+							<% if(Os[ti].is_selected){ %>
+							<span class='tag_selectable tag_select' tag_id='<%= Os[ti]._id %>'>
+								<%= Os[ti].name %>
+							</span>
+							<% }else{ %>
+							<span class='tag_selectable' tag_id='<%= Os[ti]._id %>'>
+								<%= Os[ti].name %>
+							</span>
+							<% } %>						
+						<% } %>
+					</p>		
+          <p class="tags-cat">
+            <strong>　语言属性：</strong>
+            <% for(var ti=0;ti<Lang.length;ti++) { %>
+              <% if(Lang[ti].is_selected){ %>
+              <span class='tag_selectable tag_select' tag_id='<%= Lang[ti]._id %>'>
+                <%= Lang[ti].name %>
+              </span>
+              <% }else{ %>
+              <span class='tag_selectable' tag_id='<%= Lang[ti]._id %>'>
+                <%= Lang[ti].name %>
+              </span>
+              <% } %>           
+            <% } %>
+          </p>  			
+					<p class="tags-cat">
+						<strong>技术关键字：</strong>
+						<% for(var ti=0;ti<Key.length;ti++) { %>
+							<% if(Key[ti].is_selected){ %>
+							<span class='tag_selectable tag_select' tag_id='<%= Key[ti]._id %>'>
+								<%= Key[ti].name %>
+							</span>
+							<% }else{ %>
+							<span class='tag_selectable' tag_id='<%= Key[ti]._id %>'>
+								<%= Key[ti].name %>
+							</span>
+							<% } %>						
+						<% } %>
+					</p>										
+				  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <input type='hidden' id='topic_tags' name='topic_tags' value=''></input>
+        <input type='hidden' name='_csrf' value='<%= csrf %>' />
+        <div class='form-actions'>
+          <button id='submit_btn' class='btn'>发布</button>
+        </div>
+      </form>
+    </div>
+    <% } %>
+  </div>  
+</div>
+
+<!-- ajaxupload -->
+<script src='/libs/ajax-upload/ajaxupload.js'></script>
+<!-- markdown editor -->
+<script src='/libs/pagedown/Markdown.Converter.js'></script>
+<script src='/libs/showdown.js'></script>
+<script src='/libs/pagedown/Markdown.Editor.js'></script>
+
+<script>
+$(document).ready(function(){
+  var editor;
+  function run_md_editor(){
+    // var converter = Markdown.getSanitizingConverter();
+    var converter = new Showdown.converter();
+    editor = new Markdown.Editor(converter);
+    editor.run();
+  }
+  run_md_editor();
+
+  $('.preview-btn').click(function() {
+    editor.makePreviewHtml();
+    prettyPrint();
+  });
+
+  $('.tag_selectable').click(function(){
+    $(this).toggleClass('tag_select');
+  });
+
+  $('#submit_btn').click(function(){
+    var values=[];
+    $('.tag_selectable').each(function(){
+      if($(this).hasClass('tag_select')){
+        values.push($(this).attr('tag_id'));
+      }
+    });
+    $('#topic_tags').val(values);
+    $('#create_topic_form').submit();
+  });
+});
+</script>
