@@ -52,7 +52,8 @@
       <h3><% if(topic.top){%>[置顶]<% } %><%= topic.title %></h3> 
       <div class='sep10'></div>
       <div class='topic_content'>
-        <%- topic.content %>
+        <% var wenkuTpl ='<embed width="820" height="650"  src="http://wenku.baidu.com/static/flash/apireader.swf?docid={docID}" ></embed>'; %>
+        <%- topic.content.replace(/wenku\{(.+?)\}/g,function(a,b,c,d){return wenkuTpl.replace("{docID}",b)}) %>
       </div>
       <div class='sep10'></div> 
       <% if (topic.tags.length > 0) { %>
