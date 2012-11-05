@@ -32,10 +32,11 @@
     <span class='col_fade'>
       <!-- <div class='name_part'>
         <a class='dark' href='/user/<%= topic.author.name %>'><%= topic.author.name %><%= (topic.author.nick_name?'(' + topic.author.nick_name + ')':"") %></a> 
-      </div> -->
+      </div> 
       <div class='click_part'>
         点击数 <%= topic.visit_count %>
       </div>
+      -->
       <% if(topic.reply){  %>
         <div class='reply_part'>
           <a class='dark' href="/user/<%= topic.reply.author.name %>"><%= topic.reply.author.name %><%= (topic.author.nick_name?'(' + topic.author.nick_name + ')':"") %> </a>

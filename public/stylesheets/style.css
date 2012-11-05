@@ -342,14 +342,13 @@ a.tag_big:hover {
 }
 .topic_wrap {
   float: left;
-  width: 90%;
+  width: 100%;
   position: relative;
   /*white-space: nowrap;*/
 }
 .topic_wrap .col_fade{
-  width: 35%;
+  width: 12%;
   position: absolute;top: 0;right: 0;
-  background: url(http://tb2.bdstatic.com/tb/static-frs/img/v2/reply_num_bg.gif) 0 0 no-repeat;
 }
 .title_wrap {
   width: 60%;
@@ -362,14 +361,15 @@ a.tag_big:hover {
   width: 65%;
 }
 .topic_wrap .title_wrap .view-count{
-  width: 60px;height: 23px;
+  width: 55px;height: 23px;padding-right: 5px;
   display: inline-block;
   line-height: 23px;text-align: center;
+  background: url(http://tb2.bdstatic.com/tb/static-frs/img/v2/reply_num_bg.gif) 0 0 no-repeat;
 }
 a.topic_title {
   font-size: 14px;
   white-space: nowrap;
-  top: 3px;
+  top: 1px;left: -5px;
   position: relative;
 }
 
