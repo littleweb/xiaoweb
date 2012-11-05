@@ -24,13 +24,9 @@
       </a><br />
     </div>
     <div class="detail">
-      <% var ret = (topic.content.match(/\>\s*(.+)(?=(\r|\n|$))/g)||[]); %>
+      <% var ret = (topic.content.match(/\>\s*(.+)(?=(\r|\n|$))/g)); %>
       <% if (ret[0]) { %>
         <% ret=ret[0].split("> ")[1] %>
-        <p class="desc"><%= ret %></p>
-      <% } %> 
-      <% if (ret[1]) { %>
-        <% ret=ret[1].split("> ")[1] %>
         <p class="desc"><%= ret %></p>
       <% } %> 
       <% if(topic.face != ""){ %>
