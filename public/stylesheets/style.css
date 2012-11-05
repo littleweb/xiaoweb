@@ -342,7 +342,11 @@ a.tag_big:hover {
 .topic_wrap {
   float: left;
   width: 90%;
+  position: relative;
   /*white-space: nowrap;*/
+}
+.topic_wrap .col_fade{
+  position: absolute;top: 0;right: 0;
 }
 .title_wrap {
   width: 60%;
@@ -670,7 +674,7 @@ div[class$=part] {
   width: 80px;
 }
 .reply_part {
-  width: 500px;
+  width: auto;
 }
 
 
