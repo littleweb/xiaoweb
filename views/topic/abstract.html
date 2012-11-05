@@ -24,7 +24,7 @@
       </a><br />
     </div>
     <div class="detail">
-      <% var ret = (topic.content.match(/\>\s*(.+)(?=(\r|\n|$))/g)||[])[2]; %>
+      <% var ret = (topic.content.match(/\>\s*(.+)(?=(\r|\n|$))/g)||[])[1].split("> ")[1]; %>
       <% if (ret) { %>
         <p class="desc"><%= ret %></p>
       <% } %> 
