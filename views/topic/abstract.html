@@ -7,6 +7,7 @@
 
   <div class='topic_wrap'>
     <div class='title_wrap'>
+      <span class="view-count"><%= topic.visit_count %></span>
       <!--<%- partial('tag/tag_in_abstract',{collection:topic.tags, as:'tag'}) %>-->
 		<% var _thistag=""; %>
 		<% for(var _ii=0;_ii<topic.tags.length;_ii++){ %>

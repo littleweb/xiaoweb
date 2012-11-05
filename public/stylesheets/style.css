@@ -270,6 +270,7 @@ a.tag_big:hover {
 }
 .cell .user_avatar {
   float: left;
+  display: none;
   margin-right: 10px;
 }
 .user_big_avatar {
@@ -348,6 +349,7 @@ a.tag_big:hover {
 .topic_wrap .col_fade{
   width: 35%;
   position: absolute;top: 0;right: 0;
+  background: url(http://tb2.bdstatic.com/tb/static-frs/img/v2/reply_num_bg.gif) 0 0 no-repeat;
 }
 .title_wrap {
   width: 60%;
@@ -359,9 +361,16 @@ a.tag_big:hover {
 .topic_wrap .title_wrap {
   width: 65%;
 }
+.topic_wrap .title_wrap .view-count{
+  width: 60px;height: 23px;
+  display: inline-block;
+  line-height: 23px;text-align: center;
+}
 a.topic_title {
   font-size: 14px;
   white-space: nowrap;
+  top: 3px;
+  position: relative;
 }
 
 a.count {
