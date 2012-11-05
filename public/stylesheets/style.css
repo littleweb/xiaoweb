@@ -346,6 +346,7 @@ a.tag_big:hover {
   /*white-space: nowrap;*/
 }
 .topic_wrap .col_fade{
+  width: 35%;
   position: absolute;top: 0;right: 0;
 }
 .title_wrap {
@@ -356,7 +357,7 @@ a.tag_big:hover {
   display: inline-block;
 }
 .topic_wrap .title_wrap {
-  width: 90%;
+  width: 65%;
 }
 a.topic_title {
   font-size: 14px;
