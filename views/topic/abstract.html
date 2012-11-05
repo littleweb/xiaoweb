@@ -27,12 +27,12 @@
       <% var ret = (topic.content.match(/\>\s*(.+)(?=(\r|\n|$))/g)); %>
       <% if (ret) { %>
         <% if (ret[0]) { %>
-          <% ret=ret[0].split("> ")[1] %>
-          <p class="desc"><%= ret %></p>
+          <% ret1=ret[0].split("> ")[1] %>
+          <p class="desc"><%= ret1 %></p>
         <% } %> 
         <% if (ret[1]) { %>
-          <% ret=ret[1].split("> ")[1] %>
-          <p class="desc"><%= ret %></p>
+          <% ret2=ret[1].split("> ")[1] %>
+          <p class="desc"><%= ret2 %></p>
         <% } %> 
       <% } %> 
       <% if(topic.face != ""){ %>
