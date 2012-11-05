@@ -25,9 +25,11 @@
     </div>
     <div class="detail">
       <% var ret = (topic.content.match(/\>\s*(.+)(?=(\r|\n|$))/g)); %>
-      <% if (ret[0]) { %>
-        <% ret=ret[0].split("> ")[1] %>
-        <p class="desc"><%= ret %></p>
+      <% if (ret) { %>
+        <% if (ret[0]) { %>
+          <% ret=ret[0].split("> ")[1] %>
+          <p class="desc"><%= ret %></p>
+        <% } %> 
       <% } %> 
       <% if(topic.face != ""){ %>
       <p class="face"><img width="200" style="margin:5px;" onload="this.removeAttribute('width');this.width=this.width>200?200:auto;" src="<%= topic.face %>" /></p>
