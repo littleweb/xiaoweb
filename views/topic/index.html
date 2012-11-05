@@ -49,10 +49,10 @@
       </ul>
     </div>
     <div class='inner markdown-body'>
-      <h3><% if(topic.top){%>[置顶]<% } %><%= topic.title %></h3> 
+      <h1><% if(topic.top){%>[置顶]<% } %><%= topic.title %></h1> 
       <div class='sep10'></div>
       <div class='topic_content'>
-        <% var wenkuTpl ='<embed width="820" height="650"  src="http://wenku.baidu.com/static/flash/apireader.swf?docid={docID}" ></embed>'; %>
+        <% var wenkuTpl ='<div class="wenku-player" style="margin-left:15px;"><embed width="820" height="650"  src="http://wenku.baidu.com/static/flash/apireader.swf?docid={docID}" ></embed></div>'; %>
         <%- topic.content.replace(/wenku\{(.+?)\}/g,function(a,b,c,d){return wenkuTpl.replace("{docID}",b)}) %>
       </div>
       <div class='sep10'></div> 
