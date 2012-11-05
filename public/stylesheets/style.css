@@ -347,8 +347,7 @@ a.tag_big:hover {
   /*white-space: nowrap;*/
 }
 .topic_wrap .col_fade{
-  width: 12%;
-  position: absolute;top: 0;right: 0;
+  position: absolute;bottom: 0;right: 0;
 }
 .title_wrap {
   width: 60%;
@@ -367,6 +366,7 @@ a.tag_big:hover {
   background: url(http://tb2.bdstatic.com/tb/static-frs/img/v2/reply_num_bg.gif) 0 0 no-repeat;
 }
 .topic_wrap .detail{
+  width: 90%;
   margin-top: 8px;padding-left: 60px;
 }
 .topic_wrap .detail .desc{
