@@ -30,10 +30,6 @@
           <% ret1=ret[0].split("> ")[1] %>
           <p class="desc"><%= ret1 %></p>
         <% } %> 
-        <% if (ret[1]) { %>
-          <% ret2=ret[1].split("> ")[1] %>
-          <p class="desc"><%= ret2 %></p>
-        <% } %> 
       <% } %> 
       <% if(topic.face != ""){ %>
       <p class="face"><img width="200" style="margin:5px;" onload="this.removeAttribute('width');this.width=this.width>200?200:auto;" src="<%= topic.face %>" /></p>
