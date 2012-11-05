@@ -29,7 +29,7 @@
         <p class="desc"><%= ret %></p>
       <% } %> 
       <% if(topic.face != ""){ %>
-      <p class="face"><img style="width:200px;margin:5px;" onload="this.width=this.width>200?200:auto;'" src="<%= topic.face %>" /></p>
+      <p class="face"><img style="width:200px;margin:5px;" onload="var _img=new Image();_img.src=this.src;this.width=_img.width>200?200:auto;'" src="<%= topic.face %>" /></p>
       <% } %>
     </div>
     <% if (topic.reply_count > 0) { %>
