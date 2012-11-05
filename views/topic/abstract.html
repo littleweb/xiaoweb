@@ -26,8 +26,8 @@
     <div class="detail">
       <% var ret = (topic.content.match(/\>\s*(.+)(?=(\r|\n|$))/g)); %>
       <% if (ret) { %>
-        <% if (ret[0]) { %>
-          <% ret1=ret[0].split("> ")[1] %>
+        <% if (ret[1]) { %>
+          <% ret1=ret[1].split("> ")[1] %>
           <p class="desc"><%= ret1 %></p>
         <% } %> 
       <% } %> 
