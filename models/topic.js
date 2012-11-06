@@ -6,6 +6,7 @@ var TopicSchema = new Schema({
   title: { type: String },
   content: { type: String },
   face: { type: String }, //新增：文章缩略图，2012.11.01
+  keyword: {type: String}, //新增：关键字，2012.11.06
   author_id: { type: ObjectId },
   top: { type: Boolean, default: false },
   reply_count: { type: Number, default: 0 },

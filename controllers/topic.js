@@ -149,6 +149,7 @@ exports.create = function (req, res, next) {
     title = sanitize(title).xss();
     var content = req.body.t_content;
     var face = req.body.face; //新增：文章缩略图，2012.11.01
+    var keyword = req.body.keyword; //新增：文章关键字，2012.11.06
     var topic_tags=[];
     if(req.body.topic_tags != ''){
       topic_tags = req.body.topic_tags.split(',');
@@ -164,7 +165,7 @@ exports.create = function (req, res, next) {
             }
           } 
         }
-        res.render('topic/edit',{tags:tags, edit_error:'标题不能是空的。', content:content,face: face});//新增：文章缩略图，2012.11.01
+        res.render('topic/edit',{tags:tags, edit_error:'标题不能是空的。', content:content,face: face,keyword:keyword});//新增：文章缩略图，2012.11.01
         return;
       });
     }else if(title.length<10 || title.length>100){
@@ -177,7 +178,7 @@ exports.create = function (req, res, next) {
             }
           } 
         }
-        res.render('topic/edit',{tags:tags, edit_error:'标题字数太多或太少', title:title, content:content,face: face});//新增：文章缩略图，2012.11.01
+        res.render('topic/edit',{tags:tags, edit_error:'标题字数太多或太少', title:title, content:content,face: face,keyword:keyword});//新增：文章缩略图，2012.11.01
         return;
       });
     }else{
@@ -185,6 +186,7 @@ exports.create = function (req, res, next) {
       topic.title = title;
       topic.content = content;
       topic.face = face; //新增：文章缩略图，2012.11.01
+      topic.keyword = keyword; //新增：文章关键字，2012.11.06
       topic.author_id = req.session.user._id;
       topic.save(function(err){
         if(err) return next(err);
@@ -265,7 +267,7 @@ exports.edit = function(req,res,next){
             } 
           }
           //新增：文章缩略图，2012.11.01
-          res.render('topic/edit',{action:'edit',topic_id:topic._id,title:topic.title,content:topic.content,face: topic.face,tags:all_tags});
+          res.render('topic/edit',{action:'edit',topic_id:topic._id,title:topic.title,content:topic.content,face: topic.face,keyword:topic.keyword,tags:all_tags});
         });
       }else{
         res.render('notify/notify',{error:'对不起，你不能编辑此话题。'});
@@ -288,6 +290,7 @@ exports.edit = function(req,res,next){
         title = sanitize(title).xss();
         var content = req.body.t_content;
         var face = req.body.face;
+        var keyword = req.body.keyword;
         var topic_tags=[];
         if(req.body.topic_tags != ''){
           topic_tags = req.body.topic_tags.split(',');
@@ -304,7 +307,7 @@ exports.edit = function(req,res,next){
               } 
             }
             //新增：文章缩略图，2012.11.01
-            res.render('topic/edit',{action:'edit',edit_error:'标题不能是空的。',topic_id:topic._id, content:content,face:face,tags:all_tags});
+            res.render('topic/edit',{action:'edit',edit_error:'标题不能是空的。',topic_id:topic._id, content:content,face:face,keyword:keyword,tags:all_tags});
             return;
           });
         }else{
@@ -314,6 +317,7 @@ exports.edit = function(req,res,next){
           topic.title = title;
           topic.content = content;
           topic.face = face; //新增：文章缩略图，2012.11.01
+          topic.keyword = keyword; //新增：文章关键字，2012.11.06
           topic.update_at = new Date();
           topic.save(function(err){
             if(err) return next(err);
