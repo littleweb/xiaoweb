@@ -53,9 +53,10 @@
       <div class='sep10'></div>
       <div class='topic_content'>
         <% var wenkuTpl ='<div class="wenku-player" style="margin-left:15px;"><embed width="820" height="650"  src="http://wenku.baidu.com/static/flash/apireader.swf?docid={docID}&doctype={docType}" ></embed></div>'; %>
-        <%- topic.content.replace(/wenku\{(.+?)\}/g,function(a,b,c,d){ %>
+        <% var output =  topic.content.replace(/wenku\{(.+?)\}/g,function(a,b,c,d){ %>
             <% return wenkuTpl.replace("{docID}",b.split(",")[0]).replace("{docType}",b.split(",")[1]); %>
         <% }); %>
+        <%- output %>
       </div>
       <div class='sep10'></div> 
       <% if (topic.tags.length > 0) { %>
