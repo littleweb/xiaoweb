@@ -4,6 +4,7 @@
     <!-- meta -->
     <meta charset="utf-8" />
     <meta name='description' content='<%= config.description %>'>
+    <meta name='keyword' content='<%= keyword %>'>
     <%
     var headers = config.site_headers || [];
     for (var i = 0, l = headers.length; i < l; i++) { 
@@ -95,10 +96,11 @@
       <div class='cl cr'></div>
     </div>
     <div id='backtotop'>回到顶部</div>
+  <div style="display:none;">
   <script type="text/javascript">
   var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
   document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9d32e860eda8c3531dfb2d74143fb8ff' type='text/javascript'%3E%3C/script%3E"));
   </script>
-
+  </div>
   </body>
 </html> 
