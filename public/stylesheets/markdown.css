@@ -31,9 +31,6 @@ table {
 	font-size:100%;
 	font:inherit
 }
-html {
-	overflow-y:scroll
-}
 article,aside,header,footer,nav,section,figure,figcaption,hgroup,progress,canvas {
 	display:block
 }
@@ -223,7 +220,7 @@ a.book>img {
 	background-color:#f8f8f8
 }
 .markdown-body img {
-	max-width:100%
+	max-width:96%
 }
 .markdown-body span.frame {
 	display:block;
