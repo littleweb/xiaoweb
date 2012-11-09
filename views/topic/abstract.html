@@ -31,10 +31,10 @@
           <p class="desc"><%= ret1 %></p>
         <% } %> 
       <% } %> 
-      <% if(topic.face != ""){ %>
-      <p class="face"><img width="200" style="margin:5px;" onload="this.removeAttribute('width');this.width=this.width>200?200:auto;" src="<%= topic.face %>" /></p>
-      <% } %>
     </div>
+    <% if(topic.face != ""){ %>
+      <div class="face"><img width="200" style="margin:5px;" onload="this.removeAttribute('width');this.width=this.width>200?200:auto;" src="<%= topic.face %>" /></div>
+      <% } %>
     <% if (topic.reply_count > 0) { %>
       <a class='count fr' href="/topic/<%= topic._id %>#reply<%= topic.reply_count %>"><%= topic.reply_count %></a>
     <% } %>
