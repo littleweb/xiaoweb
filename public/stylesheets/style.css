@@ -347,7 +347,10 @@ a.tag_big:hover {
   /*white-space: nowrap;*/
 }
 .topic_wrap .col_fade{
-  position: absolute;bottom: 0;left: 60px;
+  margin: 5px 0 0 65px;
+  clear: both;
+  display: block;
+  
 }
 .title_wrap {
   width: 60%;
