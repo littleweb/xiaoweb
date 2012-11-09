@@ -33,7 +33,7 @@
       <% } %> 
     </div>
     <% if(topic.face != ""){ %>
-      <div class="face"><img width="200" style="margin:5px;" onload="this.removeAttribute('width');this.width=this.width>200?200:auto;" src="<%= topic.face %>" /></div>
+      <div class="face"><img width="200" height="150" style="margin:5px;" onload="this.removeAttribute('width');this.removeAttribute('width');this.width=this.width>200?200:auto;this.height=this.height>150?150:auto;" src="<%= topic.face %>" /></div>
       <% } %>
     <% if (topic.reply_count > 0) { %>
       <a class='count fr' href="/topic/<%= topic._id %>#reply<%= topic.reply_count %>"><%= topic.reply_count %></a>
