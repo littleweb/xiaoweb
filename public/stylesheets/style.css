@@ -111,6 +111,7 @@ a.light:hover {
 }
 .panel .header {
   padding: 10px;
+  position: relative;
   border-bottom: 1px solid #e2e2e2;
 }
 .panel .moon {
