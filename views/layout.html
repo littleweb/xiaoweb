@@ -3,7 +3,17 @@
   <head>
     <!-- meta -->
     <meta charset="utf-8" />
+    <% if (locals.topic) { %>
+    <% var ret = (topic.content.match(/\>\s*(.+)(?=(\r|\n|$))/g)); %>
+    <% if (ret) { %>
+      <% if (ret[1]) { %>
+        <% ret1=ret[1].split("> ")[1] %>
+        <meta name='description' content='<%= ret1 %>'>
+      <% } %> 
+    <% } %> 
+    <% } else { %>
     <meta name='description' content='<%= config.description %>'>
+    <% } %>
     <%
     var headers = config.site_headers || [];
     for (var i = 0, l = headers.length; i < l; i++) { 
