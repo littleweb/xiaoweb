@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <% if (locals.topic) { %>
     <% var ret = (topic.content.match(/\>\s*(.+)(?=(\r|\n|$))/g)); %>
+    <% console.log(topic.content %>
+    <% console.log(topic.content.match(/\>\s*(.+)(?=(\r|\n|$))/g)); %>
     <% if (ret) { %>
       <% if (ret[1]) { %>
         <% ret1=ret[1].split("> ")[1] %>
