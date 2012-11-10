@@ -4,7 +4,7 @@
     <!-- meta -->
     <meta charset="utf-8" />
     <% if (locals.topic) { %>
-    <% var ret = (topic.content.match(/<blockquote>(.+)(?=(</blockquote>))/g)); %>
+    <% var ret = (topic.content.match(/\<blockquote\>(.+)\<\/blockquote\>/g)); %>
     <% console.log(topic.content); %>
     <% console.log(ret); %>
     <% if (ret) { %>
