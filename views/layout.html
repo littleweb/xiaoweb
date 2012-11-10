@@ -10,7 +10,7 @@
       <% return ""; %>
     <% }); %>
     <% console.log(descinfo); %>
-    <% if(descinfo.length == 3){ %>
+    <% if(descinfo[0].indexOf("{")<0){ %>
       <% var keyword = descinfo[0].replace(/{|}/g,""); %>
       <% var desc = descinfo[2]; %>
     <% }else{ %>
