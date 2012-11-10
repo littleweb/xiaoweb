@@ -4,11 +4,11 @@
     <!-- meta -->
     <meta charset="utf-8" />
     <% if (locals.topic) { %>
-    <% var ret = (topic.content.match(/\>\s*(.+)(?=(\r|\n|$))/g)); %>
+    <% var ret = (topic.content.match(/\&lt;blockquote&gt;(.+)(?=(&lt;/blockquote&gt;))/g)); %>
     <% if (ret) { %>
       <% if (ret[1]) { %>
         <% ret1=ret[1].split("> ")[1] %>
-        <meta name='description' content='<%= topic.content %>'>
+        <meta name='description' content='<%= ret %>'>
       <% } %> 
     <% } %> 
     <% } else { %>
