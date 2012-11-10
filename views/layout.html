@@ -4,15 +4,19 @@
     <!-- meta -->
     <meta charset="utf-8" />
     <% if (locals.topic) { %>
-    <% var ret = (topic.content.match(/\<blockquote\>(.+)\<\/blockquote\>/g)); %>
-    <% console.log(topic.content); %>
-    <% console.log(ret); %>
-    <% if (ret) { %>
-      <% if (ret[1]) { %>
-        <% ret1=ret[1].split("> ")[1] %>
-        <meta name='description' content='<%= ret1 %>'>
-      <% } %> 
-    <% } %> 
+    <% var descinfo=[]; %>
+    <% txt.replace(/<p>(.+)(\r|\n)/g,function(a, b, c, d){ %>
+      <% descinfo.push(b); %>
+      <% return ""; %>
+    <% }); %>
+
+    <% if(descinfo.length == 3){ %>
+      <% var keyword = descinfo[0].replace(/{|}/g,""); %>
+      <% var desc = descinfo[2]; %>
+    <% }else{ %>
+      <% var desc = descinfo[1]; %>
+    <% } %>
+    <meta name='description' content='<%= desc %>'>
     <% } else { %>
     <meta name='description' content='<%= config.description %>'>
     <% } %>
