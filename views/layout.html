@@ -4,9 +4,9 @@
     <!-- meta -->
     <meta charset="utf-8" />
     <% if (locals.topic) { %>
-    <% var ret = (topic.content.match(/\>\s*(.+)(?=(\r|\n|$))/g)); %>
+    <% var ret = (topic.content.match(/<blockquote>(.+)(?=(</blockquote>))/g)); %>
     <% console.log(topic.content); %>
-    <% console.log(topic.content.match(/\>\s*(.+)(?=(\r|\n|$))/g)); %>
+    <% console.log(ret); %>
     <% if (ret) { %>
       <% if (ret[1]) { %>
         <% ret1=ret[1].split("> ")[1] %>
