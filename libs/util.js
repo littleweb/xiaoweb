@@ -44,7 +44,7 @@ exports.format_date = function (date, friendly) {
  * @api private
  */
 
-exports.escapex = function(html){
+exports.escape = function(html){
   var codeSpan = /(^|[^\\])(`+)([^\r]*?[^`])\2(?!`)/gm;
   var codeBlock = /(?:\n\n|^)((?:(?:[ ]{4}|\t).*\n+)+)(\n*[ ]{0,3}[^ \t\n]|(?=~0))/g;
   var spans = [];
