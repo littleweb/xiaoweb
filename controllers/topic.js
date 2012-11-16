@@ -61,7 +61,7 @@ exports.index = function (req, res, next) {
         return ep.emit(err);
       }
       //topic.content = Util.xss(marked(content));
-      topic.content = Util.xss(marked(content));
+      topic.content = (marked(content));
       ep.emit('@user');
     });
   });
