@@ -70,7 +70,7 @@
       <div class='sep10'></div>
       <div class='topic_content'>
         <% var wenkuTpl ='<div class="wenku-player" style="margin-left:15px;"><embed width="820" height="650"  src="http://wenku.baidu.com/static/flash/apireader.swf?docid={docID}&doctype={docType}" ></embed></div>'; %>        
-        <% var frmTpl ='<iframe style="border:1px solid gray;" width="320" height="480" src="{iframe}" frameborder="0"></iframe>'; %>
+        <% var frmTpl ='<iframe style="border:1px solid gray;" width="320" height="480" src="http://{iframe}" frameborder="0"></iframe>'; %>
         <% var output =  topic.content.replace(/wenku\{(.+?)\}/g,function(a,b,c,d){ %>
             <% return wenkuTpl.replace("{docID}",b.split(",")[0]).replace("{docType}",b.split(",")[1]); %>
         <% }); %>
