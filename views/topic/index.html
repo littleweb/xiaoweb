@@ -74,7 +74,7 @@
         <% var output =  topic.content.replace(/wenku\{(.+?)\}/g,function(a,b,c,d){ %>
             <% return wenkuTpl.replace("{docID}",b.split(",")[0]).replace("{docType}",b.split(",")[1]); %>
         <% }); %>
-        <% var output =  output.content.replace(/iframe\{(.+?)\}/g,function(a,b,c,d){ %>
+        <% output =  output.content.replace(/iframe\{(.+?)\}/g,function(a,b,c,d){ %>
             <% return frmTpl.replace("{iframe}",b); %>
         <% }); %>
         <%- output %>
