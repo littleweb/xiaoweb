@@ -60,6 +60,7 @@ exports.index = function (req, res, next) {
       if (err) {
         return ep.emit(err);
       }
+      //topic.content = Util.xss(marked(content));
       topic.content = Util.xss(marked(content));
       ep.emit('@user');
     });
